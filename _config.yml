@@ -1,0 +1,7 @@
+name: Backslash Software
+url: https://backslash.team
+baseurl: /
+markdown: kramdown
+
+# Custom Variables, Feel Free to Modify.
+description: hi
