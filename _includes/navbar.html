@@ -1,8 +1,45 @@
-<li class="nav_item"><a href="#" class="nav_link">About</a></li>
-<li class="nav_item"><a href="#" class="nav_link">People</a></li>
-<li class="nav_item"><a href="#" class="nav_link">Projects</a></li>
-<li class="nav_item"><a href="#" class="nav_link">Apps</a></li>
-<li class="nav_item"><a href="#" class="nav_link">Extensions</a></li>
-<li class="nav_item"><a href="#" class="nav_link">Libraries</a></li>
-<li class="nav_item"><a href="#" class="nav_link">Support</a></li>
-<li class="nav_item"><a href="#" class="nav_link">Join</a></li>
+<nav id="navbar">
+    <ul class="nav_content">
+        <li class="nav_item"><a href="/" class="nav_link nav_link_logo"><i class="icon-backslash"></i></a></li>
+        <!-- Navigation List -->
+        {% include navlinks.html %}
+        <li class="nav_item"><a href="/search" class="nav_link nav_link_search"><i
+                    class="icon-magnifyingglass"></i></a></li>
+    </ul>
+    <!-- For Mobile -->
+    <div class="nav_content_m">
+        <div class="nav_bar_content">
+            <ul class="nav_bar_m">
+                <li class="nav_item">
+                    <button class="nav_link nav_link_hamburger" id="hamburger">
+                        <div class="hamburger_line hamburger_1"></div>
+                        <div class="hamburger_line hamburger_2"></div>
+                    </button>
+                </li>
+                <li class="nav_item"><a href="/" class="nav_link nav_link_logo"><i class="icon-backslash"></i></a>
+                </li>
+                <li class="nav_item"><a href="/search" class="nav_link nav_link_search"><i
+                            class="icon-magnifyingglass"></i></a></li>
+            </ul>
+            <div class="nav_search_m">
+                <form action="/search" method="get" class="search_form_m">
+                    <input type="search" name="q" class="nav_search_field_m" id="search_m" placeholder="Search {{ site.url | replace: 'https://', '' | replace: 'http://', '' }}">
+                </form>
+                <button class="nav_search_cancel_m" id="search_cancel_m">Cancel</button>
+            </div>
+        </div>
+        <div class="nav_list_wrap_m">
+            <ul class="nav_list_m">
+                <div class="nav_list_absolute_m">
+                    <div class="nav_links_m nav_list_absolute_links_m">
+                        {% include navlinks.html %}
+                    </div>
+
+                    <div class="nav_links_m nav_list_quick_links_m">
+                        {% include quicklinks.html %}
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
