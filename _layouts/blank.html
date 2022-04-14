@@ -14,255 +14,20 @@
     <meta name="description" content="{{ site.description }}">
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-    <meta property="og:title" content="{{ page.title }}">
-    <meta property="og:image" content="{{ site.url }}/assets/images/og_image.jpg">
-    <meta property="og:description" content="{{ page.description }}">
-    <meta property="og:site_name" content="{{ site.name }}">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    {% include opengraph.html %}
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="/assets/fonts.min.css">
     <link rel="stylesheet" href="/assets/reset.min.css">
-
-    <style>
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .wrapper {
-            width: 100%;
-            flex: 1 0 auto;
-        }
-
-        nav {
-            width: 100%;
-            height: 44px;
-            padding: 0 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            position: fixed;
-            top: 0;
-            z-index: 9999;
-            overflow: hidden;
-            transition-property: background-color, height;
-            transition-duration: .44s, .56s;
-            transition-timing-function: cubic-bezier(0.52, 0.16, 0.24, 1), cubic-bezier(0.52, 0.16, 0.24, 1);
-        }
-
-        .nav_content {
-            width: 100%;
-            height: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav_link {
-            height: 100%;
-            color: #F5F5F7;
-            display: inline-block;
-            opacity: 0.8;
-            font-family: "Inter", sans-serif;
-            font-weight: 300;
-            font-size: 12px;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-            user-select: none;
-        }
-
-        .nav_list_m {
-            width: 100%;
-            max-width: 650px;
-            display: block;
-            margin: 0 auto;
-            padding: 10px 45px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            transition-delay: 0s;
-        }
-
-        .nav_list_m > .nav_item {
-            width: 100%;
-            height: 45px;
-            line-height: 45px;
-            border-top: 1px solid rgba(255,255,255,0.24);
-        }
-
-        .nav_list_m > .nav_item > .nav_link {
-            width: 100%;
-            font-size: 17px;
-        }
-
-        .nav_link_logo {
-            font-size: 18px;
-        }
-
-        .nav_link_search {
-            width: 48px;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1;
-            transition: opacity .3s ease;
-        }
-
-        .nav_link:hover {
-            opacity: 1;
-        }
-
-        .nav_content_m {
-            display: none;
-            visibility: hidden;
-            width: 100%;
-            height: 100%;
-        }
-
-        .nav_bar_m {
-            width: 100%;
-            height: 48px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav_link_hamburger {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            background: none;
-            outline: none;
-            cursor: pointer;
-        }
-
-        .hamburger_line {
-            width: 17px;
-            height: 2px;
-            border-radius: 1px;
-            background-color: #FFFFFF;
-            transition: all 0.3s ease;
-            transform-origin: center;
-        }
-
-        .hamburger_1 {
-            transform: translate(0, -3px);
-        }
-
-        .hamburger_2 {
-            transform: translate(0, 3px);
-        }
-
-        .content {
-            padding-top: 44px;
-        }
-
-        footer {
-            flex-shrink: 0;
-        }
-
-        @media screen and (max-width: 770px) {
-
-            /* Mobile */
-            nav {
-                height: 48px;
-                padding: 0;
-            }
-
-            nav.open {
-                height: 100%;
-                background-color: black;
-            }
-
-            nav.open .nav_link_search {
-                opacity: 0;
-                /*transform: translate(0, 5px);*/
-            }
-
-            nav.open .hamburger_1 {
-                transform: translate(0,1px) rotate(45deg);
-            }
-
-            nav.open .hamburger_2 {
-                transform: translate(0,-1px) rotate(-45deg);
-            }
-
-            nav.open .nav_list_m {
-                opacity: 1;
-                transition-delay: 0.1s;
-            }
-
-            .nav_content {
-                display: none;
-                visibility: hidden;
-            }
-
-            .nav_content_m {
-                display: block;
-                visibility: visible;
-            }
-
-            .nav_link_search {
-                font-size: 28px;
-            }
-
-            .content {
-                padding-top: 48px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/assets/common/default.css">
 </head>
 
 <body>
     <div class="wrapper">
-        <nav id="navbar">
-            <ul class="nav_content">
-                <li class="nav_item"><a href="/" class="nav_link nav_link_logo"><i class="icon-backslash"></i></a></li>
-                <!-- Navbar List -->
-                {% include navbar.html %}
-                <li class="nav_item"><a href="#" class="nav_link nav_link_search"><i
-                            class="icon-magnifyingglass"></i></a></li>
-            </ul>
-            <!-- For Mobile -->
-            <div class="nav_content_m">
-                <ul class="nav_bar_m">
-                    <li class="nav_item">
-                        <button class="nav_link nav_link_hamburger" id="hamburger">
-                            <div class="hamburger_line hamburger_1"></div>
-                            <div class="hamburger_line hamburger_2"></div>
-                        </button>
-                    </li>
-                    <li class="nav_item"><a href="/" class="nav_link nav_link_logo"><i class="icon-backslash"></i></a>
-                    </li>
-                    <li class="nav_item"><a href="#" class="nav_link nav_link_search"><i
-                                class="icon-magnifyingglass"></i></a></li>
-                </ul>
-                <div class="nav_search_m">
+        <!-- Navigation Bar -->
+        {% include navbar.html %}
 
-                </div>
-                <ul class="nav_list_m">
-                    {% include navbar.html %}
-                </ul>
-            </div>
-        </nav>
+        <!-- Main Content -->
         <div class="content" style="height: 100%">
             <header></header>
             <main></main>
@@ -277,22 +42,13 @@
                         </g>
                     </g>
                 </svg>
-                <h1 style="font-family: 'Inter',sans-serif; font-weight: 600; font-size: 40px; margin-top: 20px;">Under Construction</h1>
+                <h1 style="font-family: 'Inter',sans-serif; font-weight: 600; font-size: 40px; margin-top: 20px; text-align: center;">Under Construction</h1>
                 <p style="font-family: 'Inter',sans-serif; font-weight: 400; font-size: 20px; margin-top: 5px;">Don't worry, we'll be back soon.</p>
             </div>
             <!-- END TEMP -->
         </div>
     </div>
     <footer></footer>
-
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navbar = document.getElementById('navbar');
-
-        hamburger.addEventListener('click', () => {
-            navbar.classList.toggle('open');
-        });
-    </script>
 </body>
 
 </html>
